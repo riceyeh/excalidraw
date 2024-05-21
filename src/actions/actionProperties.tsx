@@ -9,6 +9,7 @@ import { trackEvent } from "../analytics";
 import { ButtonIconSelect } from "../components/ButtonIconSelect";
 import { ColorPicker } from "../components/ColorPicker/ColorPicker";
 import { IconPicker } from "../components/IconPicker";
+import { CustomData } from "../components/CustomData";
 // TODO barnabasmolnar/editor-redesign
 // TextAlignTopIcon, TextAlignBottomIcon,TextAlignMiddleIcon,
 // ArrowHead icons
@@ -1154,4 +1155,45 @@ export const actionChangeArrowhead = register({
       </fieldset>
     );
   },
+});
+
+export const actionChangeCustomData = register({
+  name: "changeCustomData",
+  trackEvent: false,
+  perform: (elements, appState, value) => {
+    return {
+      ...(value.currentItemCustomData && {
+        elements: changeProperty(
+          elements,
+          appState,
+          (el) =>
+            newElementWith(el, {
+              customData: value.currentItemCustomData,
+            }),
+          true,
+        ),
+      }),
+      appState: {
+        ...appState,
+        ...value,
+      },
+      commitToHistory: !!value.currentItemCustomData,
+    };
+  },
+  PanelComponent: ({ elements, appState, updateData }) => (
+    <>
+      <h3 aria-hidden="true">{t("labels.customData")}</h3>
+      <CustomData
+        appState={appState}
+        value={getFormValue(
+          elements,
+          appState,
+          (element) => element.customData?.value,
+          true,
+          null,
+        )}
+        onChange={(value) => updateData({ currentItemCustomData: { value } })}
+      />
+    </>
+  ),
 });

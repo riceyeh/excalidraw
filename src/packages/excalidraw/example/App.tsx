@@ -35,6 +35,7 @@ import { KEYS } from "../../../keys";
 declare global {
   interface Window {
     ExcalidrawLib: typeof TExcalidraw;
+    EXCALIDRAW_ASSET_PATH: string | undefined;
   }
 }
 
@@ -125,7 +126,7 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
       return;
     }
     const fetchData = async () => {
-      const res = await fetch("/images/rocket.jpeg");
+      const res = await fetch("images/rocket.jpeg");
       const imageData = await res.blob();
       const reader = new FileReader();
       reader.readAsDataURL(imageData);
@@ -681,7 +682,7 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
             }
             initialData={initialStatePromiseRef.current.promise}
             onChange={(elements, state) => {
-              console.info("Elements :", elements, "State : ", state);
+              // console.info("Elements :", elements, "State : ", state);
             }}
             onPointerUpdate={(payload: {
               pointer: { x: number; y: number };

@@ -2164,7 +2164,7 @@ class App extends React.Component<AppProps, AppState> {
   private onTouchStart = (event: TouchEvent) => {
     // fix for Apple Pencil Scribble
     // On Android, preventing the event would disable contextMenu on tap-hold
-    if (!isAndroid) {
+    if (!isAndroid && !this.state.viewModeEnabled) {
       event.preventDefault();
     }
 
@@ -2189,7 +2189,7 @@ class App extends React.Component<AppProps, AppState> {
       didTapTwice = false;
       clearTimeout(tappedTwiceTimer);
     }
-    if (isAndroid) {
+    if (isAndroid && !this.state.viewModeEnabled) {
       event.preventDefault();
     }
 

@@ -1,4 +1,4 @@
-import "./publicPath";
+// import "./publicPath";
 import polyfill from "../../polyfill";
 
 import "../../../public/fonts.css";

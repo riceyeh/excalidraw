@@ -229,6 +229,7 @@ export type AppState = {
   currentItemStartArrowhead: Arrowhead | null;
   currentItemEndArrowhead: Arrowhead | null;
   currentItemRoundness: StrokeRoundness;
+  currentItemCustomData: string | null;
   viewBackgroundColor: string;
   scrollX: number;
   scrollY: number;
@@ -436,6 +437,8 @@ export interface ExcalidrawProps {
     element: NonDeleted<ExcalidrawEmbeddableElement>,
     appState: AppState,
   ) => JSX.Element | null;
+  onClick?: (event: React.MouseEvent<HTMLCanvasElement>) => void;
+  onDoubleClick?: (event: React.MouseEvent<HTMLCanvasElement>) => void;
 }
 
 export type SceneData = {

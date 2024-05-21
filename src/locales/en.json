@@ -128,6 +128,7 @@
     },
     "statusPublished": "Published",
     "sidebarLock": "Keep sidebar open",
+    "customData": "Custom data",
     "selectAllElementsInFrame": "Select all elements in frame",
     "removeAllElementsFromFrame": "Remove all elements from frame",
     "eyeDropper": "Pick color from canvas"

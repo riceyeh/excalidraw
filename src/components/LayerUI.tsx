@@ -454,7 +454,7 @@ const LayerUI = ({
           }
         />
       )}
-      {device.editor.isMobile && (
+      {device.editor.isMobile && children /*No children then no menu */ && (
         <MobileMenu
           app={app}
           appState={appState}

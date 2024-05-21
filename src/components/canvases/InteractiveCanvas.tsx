@@ -53,6 +53,10 @@ type InteractiveCanvasProps = {
     DOMAttributes<HTMLCanvasElement>["onPointerDown"],
     undefined
   >;
+  onClick: Exclude<
+    DOMAttributes<HTMLCanvasElement>["onClick"],
+    undefined
+  >;
   onDoubleClick: Exclude<
     DOMAttributes<HTMLCanvasElement>["onDoubleClick"],
     undefined
@@ -155,8 +159,9 @@ const InteractiveCanvas = (props: InteractiveCanvasProps) => {
       onPointerCancel={props.onPointerCancel}
       onTouchMove={props.onTouchMove}
       onPointerDown={props.onPointerDown}
+      onClick={props.onClick}
       onDoubleClick={
-        props.appState.viewModeEnabled ? undefined : props.onDoubleClick
+        /*props.appState.viewModeEnabled ? undefined : */props.onDoubleClick
       }
     >
       {t("labels.drawingCanvas")}
