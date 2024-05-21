@@ -1330,7 +1330,11 @@ class App extends React.Component<AppProps, AppState> {
                           onPointerCancel={this.removePointer}
                           onTouchMove={this.handleTouchMove}
                           onPointerDown={this.handleCanvasPointerDown}
-                          onDoubleClick={this.handleCanvasDoubleClick}
+                          onClick={this.props.onClick}
+                          onDoubleClick={
+                            this.props.onDoubleClick ??
+                            this.handleCanvasDoubleClick
+                          }
                         />
                         {this.renderFrameNames()}
                       </ExcalidrawActionManagerContext.Provider>

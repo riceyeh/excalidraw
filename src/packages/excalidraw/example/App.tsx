@@ -706,6 +706,8 @@ export default function App({ appTitle, useCustom, customArgs }: AppProps) {
             onScrollChange={rerenderCommentIcons}
             // allow all urls
             validateEmbeddable={true}
+            onClick={() => alert('onClick()')}
+            onDoubleClick={() => alert('onDoubleClick')}
           >
             {excalidrawAPI && (
               <Footer>

@@ -53,10 +53,7 @@ type InteractiveCanvasProps = {
     DOMAttributes<HTMLCanvasElement>["onPointerDown"],
     undefined
   >;
-  onClick: Exclude<
-    DOMAttributes<HTMLCanvasElement>["onClick"],
-    undefined
-  >;
+  onClick?: Exclude<DOMAttributes<HTMLCanvasElement>["onClick"], undefined>;
   onDoubleClick: Exclude<
     DOMAttributes<HTMLCanvasElement>["onDoubleClick"],
     undefined
