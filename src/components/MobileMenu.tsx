@@ -168,7 +168,7 @@ export const MobileMenu = ({
           renderCustomStats={renderCustomStats}
         />
       )}
-      <div
+     {!(appState.viewModeEnabled && appState.zenModeEnabled) && <div
         className="App-bottom-bar"
         style={{
           marginBottom: SCROLLBAR_WIDTH + SCROLLBAR_MARGIN * 2,
@@ -206,7 +206,7 @@ export const MobileMenu = ({
               )}
           </footer>
         </Island>
-      </div>
+      </div>}
     </>
   );
 };

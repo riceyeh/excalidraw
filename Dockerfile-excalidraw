@@ -1,0 +1,12 @@
+FROM node:20-slim AS base
+
+# stage excalidraw
+FROM base as excalidraw
+
+COPY . /cafe/excalidraw
+
+WORKDIR /cafe/excalidraw/src/packages/excalidraw
+RUN <<EOF
+	yarn install:deps
+	yarn build:umd
+EOF
