@@ -39,7 +39,7 @@ const MainMenu = Object.assign(
 
       return (
         <MainMenuTunnel.In>
-          <DropdownMenu open={appState.openMenu === "canvas"}>
+          {children && <DropdownMenu open={appState.openMenu === "canvas"}>
             <DropdownMenu.Trigger
               onToggle={() => {
                 setAppState({
@@ -76,6 +76,7 @@ const MainMenu = Object.assign(
                 )}
             </DropdownMenu.Content>
           </DropdownMenu>
+          }
         </MainMenuTunnel.In>
       );
     },

@@ -212,6 +212,7 @@ export const SelectedShapeActions = ({
           </div>
         </fieldset>
       )}
+      <div>{renderAction("changeCustomData")}</div>
     </div>
   );
 };

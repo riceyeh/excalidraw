@@ -106,6 +106,7 @@ import { IconButton } from "../components/IconButton";
 import { ColorPicker } from "../components/ColorPicker/ColorPicker";
 import { FontPicker } from "../components/FontPicker/FontPicker";
 import { IconPicker } from "../components/IconPicker";
+import { CustomData } from "../components/CustomData";
 import { Range } from "../components/Range";
 import {
   ArrowheadArrowIcon,
@@ -2299,4 +2300,48 @@ export const actionChangeArrowType = register<keyof typeof ARROW_TYPE>({
       </fieldset>
     );
   },
+});
+
+export const actionChangeCustomData = register<{
+  customData: { value: string };
+}>({
+  name: "changeCustomData",
+  label: "Change custom data",
+  trackEvent: false,
+  perform: (elements, appState, value) => {
+    return {
+      ...(value?.customData && {
+        elements: changeProperty(
+          elements,
+          appState,
+          (el) =>
+            newElementWith(el, {
+              customData: value?.customData,
+            }),
+          true,
+        ),
+      }),
+      appState: {
+        ...appState,
+        currentItemCustomData: value?.customData.value,
+      },
+      captureUpdate: CaptureUpdateAction.IMMEDIATELY,
+    };
+  },
+  PanelComponent: ({ elements, appState, updateData, app }) => (
+    <>
+      <h3 aria-hidden="true">{t("labels.customData")}</h3>
+      <CustomData
+        // appState={appState}
+        value={getFormValue(
+          elements,
+          app,
+          (element) => element.customData?.value,
+          true,
+          null,
+        )}
+        onChange={(value) => updateData({ customData: { value } })}
+      />
+    </>
+  ),
 });
